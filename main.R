@@ -1,9 +1,9 @@
 # main.R
-source("scripts/data_loader.R")
-source("scripts/qc_normalize.R")
-source("scripts/dim_reduction.R")
-source("scripts/clustering.R")
-source("scripts/enrichment.R")
+source("src/data_loader.R")
+source("src/qc_normalize.R")
+source("src/dim_reduction.R")
+source("src/clustering.R")
+source("src/enrichment.R")
 
 message("=== Starting Pipeline ===")
 
@@ -12,8 +12,6 @@ results_dir <- "results"
 if (!dir.exists(results_dir)) {
   message(paste("Directory '", results_dir, "' not found. Generating path...", sep=""))
   dir.create(results_dir, recursive = TRUE)
-} else {
-  message(paste("Verified destination directory '", results_dir, "' exists.", sep=""))
 }
 
 # Run data ingestion utilities
@@ -30,7 +28,7 @@ se <- compute_clusters(se, resolution = 0.5)
 
 message("=== Exporting Results ===")
 markers <- identify_markers(se)
-write.csv(markers, "data/cluster_markers.csv", row.names = FALSE)
+write.csv(markers, file = file.path(results_dir, "cluster_markers.csv"), row.names = FALSE)
 
 # Execute FEA for validation on an arbitrary cluster (e.g., Cluster 0)
 fea_results <- run_functional_enrichment(markers, target_cluster = "0")

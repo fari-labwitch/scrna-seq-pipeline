@@ -66,7 +66,7 @@ After a successful run, your local project directories will populate with the fo
 ```
 ├── data/
 │   ├── molecules.txt                    # Raw UMI single-cell count expression matrix
-│   └── tung_metadata.tsv                # Individual cell metadata indices and batch labels
+│   └── annotation.txt                   # Correct cell annotations and batch identifiers
 └── results/
     ├── cluster_markers.csv              # Statistically significant marker genes per identified cluster
     └── functional_enrichment_cluster0.csv # GO:Biological Process pathways enriched in Cluster 0

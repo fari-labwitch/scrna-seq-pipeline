@@ -1,0 +1,7 @@
+.Rhistory
+.RData
+.Rproj.user/
+
+# Local data and pipeline output exclusions
+data/
+results/

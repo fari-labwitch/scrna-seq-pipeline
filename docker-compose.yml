@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  scrna-pipeline:
+    build: .
+    image: scrna-seq-pipeline:latest
+    container_name: scrna_analysis_container
+    volumes:
+      # Maps the local "data" and "results" directories to the container's workspace data and results directory
+      - ./data:/workspace/data
+      - ./results:/worspace/results

@@ -50,15 +50,20 @@ export_pipeline_visualizations <- function(seurat_obj, results_dir = "results") 
   print(p4)
   dev.off()
   
-  # 5. Top Highly Variable Features Scatter Plot
-  if ("vst" %in% names(seurat_obj@assays$RNA@meta.features) || "SCT" %in% names(seurat_obj@assays)) {
+ # 5. Top Highly Variable Features Scatter Plot
+  if (length(VariableFeatures(seurat_obj)) > 0) {
     message("-> Exporting Highly Variable Feature Dispersion Map...")
     png(filename = file.path(results_dir, "05_highly_variable_genes.png"), 
         width = 1000, height = 600, res = 120)
+    
+    # Generate the standard Seurat variance stabilization plot
     p5 <- VariableFeaturePlot(seurat_obj) + 
-      labs(title = "Top Variable Genes Selection Profile", subtitle = "Bioinformatic Variance Stabilization Mode")
+      labs(title = "Top Variable Genes Selection Profile", 
+           subtitle = "Bioinformatic Variance Stabilization Mode")
     print(p5)
     dev.off()
+  } else {
+    message("Warning: No variable features found. Skipping Plot 05.")
   }
   
   message("All structural visualization graphs successfully written to destination path.")

@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev \
     libcurl4-openssl-dev \
     libgsl-dev \
+    libglpk-dev \
     libpng-dev \
     zlib1g-dev \
     make \

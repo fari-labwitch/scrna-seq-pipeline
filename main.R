@@ -4,6 +4,7 @@ source("src/qc_normalize.R")
 source("src/dim_reduction.R")
 source("src/clustering.R")
 source("src/enrichment.R")
+source("src/plots_visualizer.R")
 
 message("=== Starting Pipeline ===")
 
@@ -26,7 +27,11 @@ message("=== Computing Dim-Reduction and Clusters ===")
 se <- run_dimensionality_reduction(se)
 se <- compute_clusters(se, resolution = 0.5)
 
-message("=== Exporting Results ===")
+message("=== Running Heads-Up Graphical Figure Exporter ===")
+# Invoke programmatic diagram export
+export_pipeline_visualizations(se, results_dir = results_dir)
+
+message("=== Exporting Tabular Data Metrics ===")
 markers <- identify_markers(se)
 write.csv(markers, file = file.path(results_dir, "cluster_markers.csv"), row.names = FALSE)
 

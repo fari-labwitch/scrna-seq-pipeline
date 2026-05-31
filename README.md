@@ -68,6 +68,11 @@ After a successful run, your local project directories will populate with the fo
 │   ├── molecules.txt                    # Raw UMI single-cell count expression matrix
 │   └── annotation.txt                   # Correct cell annotations and batch identifiers
 └── results/
+├── 01_qc_metrics_distribution.png   # Violin plot tracking raw transcripts & feature genes
+    ├── 02_cell_feature_histogram.png    # Histogram capturing skewness of cell read profiles
+    ├── 03_pca_dimensionality_reduction.png # Evaluation plot tracking technical batch profiles
+    ├── 04_umap_cluster_map.png          # High-resolution 2D projection of isolated clusters
+    ├── 05_highly_variable_genes.png     # Dispersion plot indicating top variant genes used
     ├── cluster_markers.csv              # Statistically significant marker genes per identified cluster
     └── functional_enrichment_cluster0.csv # GO:Biological Process pathways enriched in Cluster 0
 ```

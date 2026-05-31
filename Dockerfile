@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN R -e "options(repos = c(CRAN = 'https://cloud.r-project.org')); install.packages('BiocManager')"
 
 # Install explicit workflow packages
-RUN R -e "BiocManager::install(c('Seurat', 'gprofiler2', 'ggplot2', 'dplyr', 'magrittr', 'Matrix'))"
+RUN R -e "BiocManager::install(c('Seurat', 'gprofiler2', 'ggplot2', 'dplyr', 'magrittr', 'Matrix', 'limma'))"
 
 # Initialize isolated execution workspace
 WORKDIR /workspace
